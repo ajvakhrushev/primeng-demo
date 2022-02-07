@@ -176,3 +176,29 @@
   p-multiselect.without-checkboxes .p-checkbox-box.p-highlight:not(.p-checkbox-disabled):hover {
     display: none;
   }
+
+  p-multiselect.custom-item-template .country-item {
+    
+  }
+
+  p-multiselect.custom-selected-item-template .country-item {
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  p-multiselect.custom-selected-item-template .country-item:first-child {
+    margin-left: 0;
+  }
+
+  p-multiselect.custom-item-template .country-item .country-item-name,
+  p-multiselect.custom-selected-item-template .country-item .country-item-name {
+    margin-left: 35px;    
+  }
+
+  p-multiselect.custom-item-template .country-item .country-item-flag,
+  p-multiselect.custom-selected-item-template .country-item .country-item-flag {
+    float: left;
+    margin-top: 2px;
+    width: 30px;
+    height: 20px;
+  }

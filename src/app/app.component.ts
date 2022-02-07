@@ -18,6 +18,8 @@ export class AppComponent implements OnInit {
   chipsEllipsisCountries: ICountry[] = [];
   customCheckboxesCountries: ICountry[] = [];
   withoutCheckboxesCountries: ICountry[] = [];
+  customItemTemplateCountries: ICountry[] = [];
+  customSelectedItemTemplateCountries: ICountry[] = [];
   groupedCountries: IGroupCountries[] = [];
 
   simpleExampleControl: FormControl = new FormControl([]);
@@ -26,6 +28,8 @@ export class AppComponent implements OnInit {
   chipsEllipsisControl: FormControl = new FormControl([]);
   customCheckboxesControl: FormControl = new FormControl([]);
   withoutCheckboxesControl: FormControl = new FormControl([]);
+  customItemTemplateControl: FormControl = new FormControl([]);
+  customSelectedItemTemplateControl: FormControl = new FormControl([]);
   groupedControl: FormControl = new FormControl([]);
 
   constructor(private appService: AppService) {}
@@ -37,6 +41,8 @@ export class AppComponent implements OnInit {
     this.chipsEllipsisCountries = this.appService.deepCopy((countries as any).default);
     this.customCheckboxesCountries = this.appService.deepCopy((countries as any).default);
     this.withoutCheckboxesCountries = this.appService.deepCopy((countries as any).default);
+    this.customItemTemplateCountries = this.appService.deepCopy((countries as any).default);
+    this.customSelectedItemTemplateCountries = this.appService.deepCopy((countries as any).default);
     this.groupedCountries = this.appService.deepCopy((countries as any).default).sort(
       (prev: ICountry, next: ICountry) => {
         if (prev.name === next.name) {
@@ -66,5 +72,19 @@ export class AppComponent implements OnInit {
       },
       []
     );
+
+    document.addEventListener('error', this.onDocumentError, true);
+  }
+
+  ngOnDestroy(): void {
+    document.removeEventListener('error', this.onDocumentError);
+  }
+
+  onDocumentError(event: Event): void {
+    if (!(event.target as HTMLElement).classList.contains('country-item-flag')) {
+      return;
+    }
+
+    (event.target as HTMLElement).style.display = 'none';
   }
 }
