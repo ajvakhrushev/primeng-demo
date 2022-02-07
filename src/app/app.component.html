@@ -1,0 +1,95 @@
+<router-outlet></router-outlet>
+
+<div class="card-container">
+
+    <div class="card">
+        <h3>Simple example</h3>
+        <p-multiSelect
+            [options]="simpleExampleCountries"
+            [formControl]="simpleExampleControl"
+            optionLabel="name"
+            defaultLabel="Select a Country"
+            selectedItemsLabel="{0} items selected"
+        ></p-multiSelect>
+        <p>{{simpleExampleControl.value | json}}</p>
+    </div>
+
+    <div class="card">
+        <h3>Ellipsis mode</h3>
+        <p-multiSelect
+            [options]="ellipsisModeCountries"
+            [formControl]="ellipsisModeControl"
+            optionLabel="name"
+            defaultLabel="Select a Country"
+        ></p-multiSelect>
+        <p>{{ellipsisModeControl.value | json}}</p>
+    </div>
+
+    <div class="card">
+        <h3>Chips display</h3>
+        <p-multiSelect
+            class="without-ellipsis"
+            [options]="chipsCountries"
+            [formControl]="chipsControl"
+            optionLabel="name"
+            defaultLabel="Select a Country"
+            display="chip"
+        ></p-multiSelect>
+        <p>{{chipsControl.value | json}}</p>
+    </div>
+
+    <div class="card">
+        <h3>Chips display with ellipsis mode</h3>
+        <p-multiSelect
+            [options]="chipsEllipsisCountries"
+            [formControl]="chipsEllipsisControl"
+            optionLabel="name"
+            defaultLabel="Select a Country"
+            display="chip"
+        ></p-multiSelect>
+        <p>{{chipsEllipsisControl.value | json}}</p>
+    </div>
+
+    <div class="card">
+        <h3>Example with groups (grouped by beginning letters)</h3>
+        <p-multiSelect
+            [group]="true"
+            [options]="groupedCountries"
+            [formControl]="groupedControl"
+            optionLabel="name"
+            defaultLabel="Select a Country"
+        >
+            <ng-template let-group pTemplate="group">
+                <div class="p-d-flex p-ai-center">
+                    <span>{{group.label}}</span>
+                </div>
+            </ng-template>
+        </p-multiSelect>
+        <p>{{groupedControl.value | json}}</p>
+    </div>
+
+    <div class="card">
+        <h3>Example with custom checkboxes</h3>
+        <p-multiSelect
+            class="custom-checkbox"
+            [options]="customCheckboxesCountries"
+            [formControl]="customCheckboxesControl"
+            optionLabel="name"
+            defaultLabel="Select a Country"
+        ></p-multiSelect>
+        <p>{{customCheckboxesControl.value | json}}</p>
+    </div>
+
+    <div class="card">
+        <h3>Example without checkboxes</h3>
+        <p-multiSelect
+            class="without-checkboxes"
+            [options]="withoutCheckboxesCountries"
+            [formControl]="withoutCheckboxesControl"
+            optionLabel="name"
+            defaultLabel="Select a Country"
+        ></p-multiSelect>
+        <p>{{withoutCheckboxesControl.value | json}}</p>
+    </div>
+
+</div>
